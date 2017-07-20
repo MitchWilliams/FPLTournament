@@ -9,10 +9,11 @@ namespace FPLTournament.Models
 
     public class Fixture
     {
-        public int fixtureID;
-        public Team teamOne;
-        public Team teamTwo;
-        public int gameweek;
+
+        public int fixtureId { get; set; }
+        public string fixtureStage;
+        public virtual ICollection<FixtureAssignment> fixtureAssignments { get; set; }
+        public virtual Gameweek gameweek { get; set; }
 
 
     }

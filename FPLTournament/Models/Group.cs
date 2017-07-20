@@ -10,10 +10,8 @@ namespace FPLTournament.Models
 
         private int groupID;
 
-        private List<Team> teams = new List<Team>();
-
-
-
+        public virtual ICollection<GroupAssignment> groupAssignments { get; set; }
+        public virtual GroupStage groupStage { get; set; }
 
     }
 }

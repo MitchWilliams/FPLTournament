@@ -9,12 +9,12 @@ namespace FPLTournament.Models
     public class Tournament
     {
         
-        private int tournamentID;
+        private int tournamentId;
         private string name;
-        private List<Team> teams = new List<Team>();
-        private GroupStage groupStage;
-        private KnockoutStage knockoutStage;
+        public virtual ICollection<TournamentAssignment> tournamentAssignments { get; set; }
+        public virtual GroupStage groupStage { get; set; }
         private Boolean isGroupTournament;
+        
 
 
     }
