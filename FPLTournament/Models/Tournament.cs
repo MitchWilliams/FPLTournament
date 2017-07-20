@@ -8,6 +8,8 @@ namespace FPLTournament.Models
 {
     public class Tournament
     {
+        
+        private int tournamentID;
         private string name;
         private List<Team> teams = new List<Team>();
         private GroupStage groupStage;

@@ -7,10 +7,10 @@ namespace FPLTournament.Models
 {
     public class GroupStage
     {
-        private List<Group> teams = new List<Group>();
+        private List<Group> groups = new List<Group>();
 
 
-        public void drawGroups()
+       /* public void drawGroups()
         {
 
         }
@@ -19,6 +19,6 @@ namespace FPLTournament.Models
         {
 
         }
-
+        */
     }
 }

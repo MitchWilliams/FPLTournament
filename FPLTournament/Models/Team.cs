@@ -12,7 +12,9 @@ namespace FPLTournament.Models
         private int totalScore;
         private int groupPoints;
         private string manager;
-        private string name; 
+        private string name;
+        private string URL;
+        private int teamID;
 
 
     }
