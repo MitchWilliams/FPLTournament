@@ -119,6 +119,7 @@
     <Compile Include="Models\Fixture.cs" />
     <Compile Include="Models\FixtureAssignment.cs" />
     <Compile Include="Models\Gameweek.cs" />
+    <Compile Include="Models\Globals.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\GroupAssignment.cs" />
     <Compile Include="Models\GroupStage.cs" />
