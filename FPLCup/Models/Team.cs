@@ -7,7 +7,7 @@ namespace FPLTournament.Models
 {
     public class Team
     {
-        private int teamId;
+        private int TeamId;
         private int weeklyScore;
         private int totalScore;
         private int groupPoints;

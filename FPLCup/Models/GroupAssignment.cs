@@ -7,9 +7,9 @@ namespace FPLTournament.Models
 {
     public class GroupAssignment
     {
-        public int groupAssignmentId { get; set; }
-        public int teamId { get; set; }
-        public int groupId { get; set; }
+        public int GroupAssignmentId { get; set; }
+        public int TeamId { get; set; }
+        public int GroupId { get; set; }
 
         public virtual Group group { get; set; }
         public virtual Team team { get; set; }

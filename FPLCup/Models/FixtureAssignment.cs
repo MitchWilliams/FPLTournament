@@ -7,9 +7,9 @@ namespace FPLTournament.Models
 {
     public class FixtureAssignment
     {
-        public int fixtureAssignmentId { get; set; }
-        public int fixtureId { get; set; }
-        public int teamId { get; set; }
+        public int FixtureAssignmentId { get; set; }
+        public int FixtureId { get; set; }
+        public int TeamId { get; set; }
 
         public virtual Team team { get; set; }
         public virtual Fixture fixture { get; set; }

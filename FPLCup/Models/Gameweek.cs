@@ -10,8 +10,7 @@ namespace FPLTournament.Models
     {
         private DateTime startDate { get; set; }
         private DateTime endDate { get; set; }
-
-        private int gameweekId;
+        private int GameweekId;
         public virtual ICollection<Fixture> fixtures { get; set; }
 
     }
