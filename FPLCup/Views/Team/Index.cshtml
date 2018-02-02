@@ -1,0 +1,81 @@
+﻿@model IEnumerable<FPLTournament.Models.Team>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.weeklyScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.groupPoints)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.groupWins)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.groupLosses)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.groupDraws)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.manager)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.URL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.weeklyScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.groupPoints)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.groupWins)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.groupLosses)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.groupDraws)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.manager)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.URL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TeamId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TeamId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TeamId })
+        </td>
+    </tr>
+}
+
+</table>

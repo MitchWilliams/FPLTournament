@@ -7,6 +7,7 @@ namespace FPLTournament.Models
 {
     public class Globals
     {
-        public string urlPrefix;
+        public string urlPrefix { get; set; }
+
     }
 }

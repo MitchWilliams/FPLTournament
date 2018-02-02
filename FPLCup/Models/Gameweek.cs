@@ -8,9 +8,9 @@ namespace FPLTournament.Models
 {
     public class Gameweek
     {
-        private DateTime startDate { get; set; }
-        private DateTime endDate { get; set; }
-        private int GameweekId;
+        public DateTime startDate { get; set; }
+        public DateTime endDate { get; set; }
+        public int GameweekId { get; set; }
         public virtual ICollection<Fixture> fixtures { get; set; }
 
     }

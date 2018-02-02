@@ -10,12 +10,13 @@ namespace FPLTournament.Models
     {
         
      
-        private int TournamentId;
-        private string name;
+        public int TournamentId { get; set; }
+        public string name { get; set; }
         public virtual ICollection<TournamentAssignment> tournamentAssignments { get; set; }
         public virtual GroupStage groupStage { get; set; }
-        private Boolean isGroupTournament;
-        
+        public Boolean isGroupTournament { get; set; }
+
+
 
 
     }

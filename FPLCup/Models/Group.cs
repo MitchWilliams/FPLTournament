@@ -8,7 +8,7 @@ namespace FPLTournament.Models
     public class Group
     {
 
-        private int GroupID;
+        public int GroupId { get; set; }
 
         public virtual ICollection<GroupAssignment> groupAssignments { get; set; }
         public virtual GroupStage groupStage { get; set; }
