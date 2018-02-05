@@ -1,0 +1,26 @@
+﻿@model FPLTournament.Models.GroupStage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GroupStage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tournament.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tournament.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GroupStageId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

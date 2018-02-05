@@ -11,119 +11,107 @@ using FPLTournament.Models;
 
 namespace FPLCup.Controllers
 {
-    public class TournamentController : Controller
+    public class GroupsController : Controller
     {
         private FPLContext db = new FPLContext();
 
-        // GET: Tournament
+        // GET: Groups
         public ActionResult Index()
         {
-            var tournaments = db.Tournaments.Include(t => t.groupStage);
-            return View(tournaments.ToList());
+            return View(db.Groups.ToList());
         }
 
-        // GET: Tournament/Details/5
+        // GET: Groups/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
-            if (tournament == null)
+            Group group = db.Groups.Find(id);
+            if (group == null)
             {
                 return HttpNotFound();
             }
-            return View(tournament);
+            return View(group);
         }
 
-        // GET: Tournament/Create
+        // GET: Groups/Create
         public ActionResult Create()
         {
-            ViewBag.TournamentId = new SelectList(db.GroupStages, "GroupStageId", "GroupStageId");
             return View();
         }
 
-        // POST: Tournament/Create
+        // POST: Groups/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //Modify so that there's separate creates if there is a Group Stage or not
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TournamentId,name,isGroupTournament")] Tournament tournament)
+        public ActionResult Create([Bind(Include = "GroupId")] Group group)
         {
             if (ModelState.IsValid)
             {
-                if (tournament.isGroupTournament == true)
-                {
-                    GroupStage gs = new GroupStage();
-                    tournament.groupStage = gs;
-                }
-
-                db.Tournaments.Add(tournament);
+                db.Groups.Add(group);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TournamentId = new SelectList(db.GroupStages, "GroupStageId", "GroupStageId", tournament.TournamentId);
-            return View(tournament);
+            return View(group);
         }
 
-        // GET: Tournament/Edit/5
+        // GET: Groups/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
-            if (tournament == null)
+            Group group = db.Groups.Find(id);
+            if (group == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TournamentId = new SelectList(db.GroupStages, "GroupStageId", "GroupStageId", tournament.TournamentId);
-            return View(tournament);
+            return View(group);
         }
 
-        // POST: Tournament/Edit/5
+        // POST: Groups/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TournamentId,name,isGroupTournament")] Tournament tournament)
+        public ActionResult Edit([Bind(Include = "GroupId")] Group group)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tournament).State = EntityState.Modified;
+                db.Entry(group).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TournamentId = new SelectList(db.GroupStages, "GroupStageId", "GroupStageId", tournament.TournamentId);
-            return View(tournament);
+            return View(group);
         }
 
-        // GET: Tournament/Delete/5
+        // GET: Groups/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
-            if (tournament == null)
+            Group group = db.Groups.Find(id);
+            if (group == null)
             {
                 return HttpNotFound();
             }
-            return View(tournament);
+            return View(group);
         }
 
-        // POST: Tournament/Delete/5
+        // POST: Groups/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tournament tournament = db.Tournaments.Find(id);
-            db.Tournaments.Remove(tournament);
+            Group group = db.Groups.Find(id);
+            db.Groups.Remove(group);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

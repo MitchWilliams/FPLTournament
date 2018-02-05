@@ -11,119 +11,112 @@ using FPLTournament.Models;
 
 namespace FPLCup.Controllers
 {
-    public class TournamentController : Controller
+    public class GroupStagesController : Controller
     {
         private FPLContext db = new FPLContext();
 
-        // GET: Tournament
+        // GET: GroupStages
         public ActionResult Index()
         {
-            var tournaments = db.Tournaments.Include(t => t.groupStage);
-            return View(tournaments.ToList());
+            var groupStages = db.GroupStages.Include(g => g.tournament);
+            return View(groupStages.ToList());
         }
 
-        // GET: Tournament/Details/5
+        // GET: GroupStages/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
-            if (tournament == null)
+            GroupStage groupStage = db.GroupStages.Find(id);
+            if (groupStage == null)
             {
                 return HttpNotFound();
             }
-            return View(tournament);
+            return View(groupStage);
         }
 
-        // GET: Tournament/Create
+        // GET: GroupStages/Create
         public ActionResult Create()
         {
-            ViewBag.TournamentId = new SelectList(db.GroupStages, "GroupStageId", "GroupStageId");
+            ViewBag.GroupStageId = new SelectList(db.Tournaments, "TournamentId", "name");
             return View();
         }
 
-        // POST: Tournament/Create
+        // POST: GroupStages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //Modify so that there's separate creates if there is a Group Stage or not
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TournamentId,name,isGroupTournament")] Tournament tournament)
+        public ActionResult Create([Bind(Include = "GroupStageId")] GroupStage groupStage)
         {
             if (ModelState.IsValid)
             {
-                if (tournament.isGroupTournament == true)
-                {
-                    GroupStage gs = new GroupStage();
-                    tournament.groupStage = gs;
-                }
-
-                db.Tournaments.Add(tournament);
+                db.GroupStages.Add(groupStage);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TournamentId = new SelectList(db.GroupStages, "GroupStageId", "GroupStageId", tournament.TournamentId);
-            return View(tournament);
+            ViewBag.GroupStageId = new SelectList(db.Tournaments, "TournamentId", "name", groupStage.GroupStageId);
+            return View(groupStage);
         }
 
-        // GET: Tournament/Edit/5
+        // GET: GroupStages/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
-            if (tournament == null)
+            GroupStage groupStage = db.GroupStages.Find(id);
+            if (groupStage == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TournamentId = new SelectList(db.GroupStages, "GroupStageId", "GroupStageId", tournament.TournamentId);
-            return View(tournament);
+            ViewBag.GroupStageId = new SelectList(db.Tournaments, "TournamentId", "name", groupStage.GroupStageId);
+            return View(groupStage);
         }
 
-        // POST: Tournament/Edit/5
+        // POST: GroupStages/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TournamentId,name,isGroupTournament")] Tournament tournament)
+        public ActionResult Edit([Bind(Include = "GroupStageId")] GroupStage groupStage)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tournament).State = EntityState.Modified;
+                db.Entry(groupStage).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TournamentId = new SelectList(db.GroupStages, "GroupStageId", "GroupStageId", tournament.TournamentId);
-            return View(tournament);
+            ViewBag.GroupStageId = new SelectList(db.Tournaments, "TournamentId", "name", groupStage.GroupStageId);
+            return View(groupStage);
         }
 
-        // GET: Tournament/Delete/5
+        // GET: GroupStages/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
-            if (tournament == null)
+            GroupStage groupStage = db.GroupStages.Find(id);
+            if (groupStage == null)
             {
                 return HttpNotFound();
             }
-            return View(tournament);
+            return View(groupStage);
         }
 
-        // POST: Tournament/Delete/5
+        // POST: GroupStages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tournament tournament = db.Tournaments.Find(id);
-            db.Tournaments.Remove(tournament);
+            GroupStage groupStage = db.GroupStages.Find(id);
+            db.GroupStages.Remove(groupStage);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
