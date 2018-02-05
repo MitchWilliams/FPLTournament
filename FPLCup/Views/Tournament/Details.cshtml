@@ -1,0 +1,62 @@
+﻿@model FPLTournament.Models.Tournament
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tournament</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.groupStage.GroupStageId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.groupStage.GroupStageId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isGroupTournament)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isGroupTournament)
+        </dd>
+
+    </dl>
+    <h4>Teams</h4>
+    <table class="table">
+        <tr>
+            <th>
+                Team
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.tournamentAssignments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.team.name)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TournamentId }) |
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Add team", "Create", "TournamentAssignments", new { id = Model.TournamentId },null)
+</p>

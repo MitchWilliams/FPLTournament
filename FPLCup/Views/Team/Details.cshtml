@@ -1,0 +1,90 @@
+﻿@model FPLTournament.Models.Team
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.weeklyScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weeklyScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.groupPoints)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.groupPoints)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.groupWins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.groupWins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.groupLosses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.groupLosses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.groupDraws)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.groupDraws)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.manager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.manager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TeamId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
